@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { DataGrid, Column, MasterDetail } from 'devextreme-react/data-grid';
+import data from './data';
+import { DetailsRow } from './components/DetailsRow';
+import 'devextreme/dist/css/dx.darkmoon.css';
+// import 'devextreme/dist/css/dx.material.orange.dark.compact.css';
+// import 'devextreme/dist/css/dx.material.teal.dark.css';
 
-function App() {
+const employes = data.getEmployees();
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataGrid
+        id="grid-container"
+        dataSource={employes}
+        keyExpr="ID"
+        showBorders={true}
+      >
+        <Column dataField="CityFrom" width={70} caption="From" />
+        <Column dataField="CityTo" />
+        <MasterDetail enabled={true} component={({ data }) => <DetailsRow _key={data.key}/>} />
+      </DataGrid>
     </div>
   );
-}
+};
 
 export default App;
