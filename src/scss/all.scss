@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(144, 174, 95);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.select {
+  margin-bottom: 100px;
+  span {
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}

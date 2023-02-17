@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import SelectComponent from 'react-select';
 import { SingleValue } from 'react-select/dist/declarations/src';
+import s from './Select.module.scss'
 
 const options = [
   { value: 'From', label: 'From' },
@@ -24,11 +25,12 @@ export const Select: FC<ISelectProps> = ({ onChange }) => {
   };
 
   return (
-    <div>
+    <div className={s.container}>
       <SelectComponent
         options={options}
         onChange={onSelectChange}
         isClearable={true}
+        placeholder='Выбрать'
       />
     </div>
   );
