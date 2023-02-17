@@ -40,22 +40,20 @@ export const DetailsRow: FC<IDetailsRowProps> = ({ _key }) => {
     setDataSource(getTasks(_key) as any);
   }, [_key]);
   
-  const completedValue = (rowData: ITask) => {
-    return rowData.Status === 'Completed';
-  };
 
   return (
     <div>
       <DataGrid dataSource={dataSource} showBorders={true}
           columnAutoWidth={true}>
-            <Column dataField="Subject" />
-          <Column dataField="StartDate" dataType="date" />
-          <Column dataField="DueDate" dataType="date" />
-          <Column dataField="Priority" />
+            <Column dataField="Отправка и прибытие" />
+          <Column dataField="Дата отправления" dataType="date" />
+          <Column dataField="Дата прибытия" dataType="date" />
+          <Column dataField="Груз" />
           <Column
-            caption="Completed"
-            dataType="boolean"
-            calculateCellValue={completedValue}
+          dataField="Вес"
+            // caption="Статус"
+            // dataType="boolean"
+            // calculateCellValue={completedValue}
           />
           </DataGrid>
     </div>
