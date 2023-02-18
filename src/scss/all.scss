@@ -6,21 +6,21 @@
 }
 
 body {
-  background-color: rgb(144, 174, 95);
+  background: linear-gradient(#e66465, #9198e5);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row-reverse;
   max-width: 1440px;
-  height: 100vh;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .select {
-  margin-bottom: 100px;
+  margin-left: 50px;
   span {
     display: block;
     color: white;

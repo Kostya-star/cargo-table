@@ -1,5 +1,6 @@
 import { cities } from 'api/mock_api';
 import { DetailsRow } from 'components/DetailsRow';
+import { Select } from 'components/Select/Select';
 import {
   Column,
   DataGrid,
@@ -9,19 +10,16 @@ import {
   SearchPanel,
 } from 'devextreme-react/data-grid';
 import 'devextreme/dist/css/dx.material.blue.dark.css';
-// import 'devextreme/dist/css/dx.material.orange.dark.compact.css';
-// import 'devextreme/dist/css/dx.material.teal.dark.css';
-import { Select } from 'components/Select/Select';
 import { useState } from 'react';
-import 'scss/all.scss';
 import { SingleValue } from 'react-select/dist/declarations/src';
+import 'scss/all.scss';
 import { IOption } from './../components/Select/Select';
 
 export const Home = () => {
-  const [selectedColumn, setSelectedColumn] = useState<string>('');
+  const [selectedColumn, setSelectedColumn] = useState('');
 
-  const onSelectColumn = (column:  SingleValue<IOption>) => {
-    if(column) {
+  const onSelectColumn = (column: SingleValue<IOption>) => {
+    if (column) {
       setSelectedColumn(column.value);
     }
   };
@@ -30,34 +28,34 @@ export const Home = () => {
     <div className="container">
       <div className="select">
         <span>Искать по колонке: </span>
-      <Select onChange={onSelectColumn} />
+        <Select onChange={onSelectColumn} />
       </div>
-        <DataGrid
-          dataSource={cities}
-          keyExpr="ID"
-          showBorders={true}
-          columnAutoWidth
-          hoverStateEnabled={true}
-        >
-          <HeaderFilter visible={true} />
-          <FilterPanel visible={true} />
-          <SearchPanel visible={true} />
+      <DataGrid
+        dataSource={cities}
+        keyExpr="ID"
+        showBorders={true}
+        columnAutoWidth
+        hoverStateEnabled={true}
+      >
+        <HeaderFilter visible={true} />
+        <FilterPanel visible={true} />
+        <SearchPanel visible={true} />
 
-          <Column
-            dataField="CityFrom"
-            caption="From"
-            allowSearch={selectedColumn === 'From' || selectedColumn === ''}
-          />
-          <Column
-            dataField="CityTo"
-            caption="To"
-            allowSearch={selectedColumn === 'To' || selectedColumn === ''}
-          />
-          <MasterDetail
-            enabled={true}
-            component={({ data }) => <DetailsRow _key={data.key} />}
-          />
-        </DataGrid>
+        <Column
+          dataField="CityFrom"
+          caption="Из города"
+          allowSearch={selectedColumn === 'From' || selectedColumn === ''}
+        />
+        <Column
+          dataField="CityTo"
+          caption="В город"
+          allowSearch={selectedColumn === 'To' || selectedColumn === ''}
+        />
+        <MasterDetail
+          enabled={true}
+          component={({ data }) => <DetailsRow _key={data.key} />}
+        />
+      </DataGrid>
     </div>
   );
 };
